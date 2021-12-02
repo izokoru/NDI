@@ -36,6 +36,19 @@ public class MainApiController {
         );
     }
 
+    @GetMapping(value = "/test2")
+    public ApiResponse test2(
+            @RequestParam(value = "ui") final int code,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        if (log.isDebugEnabled()) log.debug("Test2 request.");
+        return new ApiResponse(
+                "Test2 request successful.",
+                "Le ui saisi est " + code
+        );
+    }
+
     @ExceptionHandler({
             MissingServletRequestParameterException.class,
             MethodArgumentTypeMismatchException.class
