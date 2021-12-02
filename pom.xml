@@ -48,6 +48,11 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>front</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
