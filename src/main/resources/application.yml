@@ -1,7 +1,7 @@
 server:
   port: 8090
   servlet:
-    context-path: /spring-api
+    context-path: /spring
   error:
     whitelabel.enabled: true
     include-binding-errors: always
