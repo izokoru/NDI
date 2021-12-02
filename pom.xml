@@ -72,7 +72,7 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>test</id>
+            <id>ndi</id>
             <url>file:///${project.basedir}/target</url>
         </repository>
     </distributionManagement>
