@@ -70,4 +70,10 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>test</id>
+            <url>file:///${project.basedir}/target</url>
+        </repository>
+    </distributionManagement>
 </project>
