@@ -1,5 +1,6 @@
 package fr.bgdlanight.ndi.web.rest;
 
+import fr.bgdlanight.ndi.model.Personne;
 import fr.bgdlanight.ndi.model.apiresponse.ApiError;
 import fr.bgdlanight.ndi.model.apiresponse.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
