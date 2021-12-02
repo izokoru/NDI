@@ -23,14 +23,14 @@ public class MainApiController {
 
     // Méthodes
     @GetMapping(value = "/test")
-    public ApiResponse ressourcesDiffusables(
+    public ApiResponse test(
             @RequestParam(value = "code") final int code,
             HttpServletRequest request,
             HttpServletResponse response
     ) {
         if (log.isDebugEnabled()) log.debug("Test request.");
         return new ApiResponse(
-                "Ressources diffusables request successful.",
+                "Test request successful.",
                 "Le code saisi est " + code
         );
     }
