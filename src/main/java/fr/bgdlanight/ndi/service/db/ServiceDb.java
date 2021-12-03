@@ -11,4 +11,6 @@ public interface ServiceDb {
     ActionDeSauvetage getActionById(long id) throws Exception;
 
     ArrayList<Personne> getPersonnes() throws Exception;
+
+    ArrayList<ActionDeSauvetage> getActions() throws Exception;
 }

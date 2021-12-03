@@ -65,6 +65,18 @@ public class MainApiController {
         );
     }
 
+    @GetMapping(value = "/actiondesauvetages")
+    public ApiResponse actiondesauvetages(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        if (log.isDebugEnabled()) log.debug("Action De Sauvetage request.");
+        return new ApiResponse(
+                "Action De Sauvetage request successful.",
+                this.serviceDb.getActions()
+        );
+    }
+
     @GetMapping(value = "/personnes")
     public ApiResponse personnes(
             HttpServletRequest request,
