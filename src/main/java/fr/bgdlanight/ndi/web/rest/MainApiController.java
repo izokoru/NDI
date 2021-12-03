@@ -52,6 +52,18 @@ public class MainApiController {
         );
     }
 
+    @GetMapping(value = "/personnes")
+    public ApiResponse personnes(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        if (log.isDebugEnabled()) log.debug("Personnes request.");
+        return new ApiResponse(
+                "Personnes request successful.",
+                this.serviceDb.getPersonnes()
+        );
+    }
+
     @ExceptionHandler({
             MissingServletRequestParameterException.class,
             MethodArgumentTypeMismatchException.class

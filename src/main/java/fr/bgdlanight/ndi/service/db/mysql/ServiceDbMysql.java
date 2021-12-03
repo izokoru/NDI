@@ -68,4 +68,31 @@ public class ServiceDbMysql implements ServiceDb {
             return null;
         }
     }
+
+    @Override
+    public ArrayList<Personne> getPersonnes() throws Exception {
+        Class.forName("org.mariadb.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(URL, LOGIN, PASSWD);
+        Statement statement = connection.createStatement();
+        String sql = "SELECT * FROM Personne;";
+        ResultSet resultSet = statement.executeQuery(sql);
+        ArrayList<Personne> personnes = new ArrayList<>();
+
+        while (resultSet.next()) {
+            personnes.add(new Personne(
+                    resultSet.getInt("id"),
+                    resultSet.getString("nom"),
+                    resultSet.getString("prenom"),
+                    resultSet.getDate("naissance"),
+                    resultSet.getDate("mort"),
+                    resultSet.getString("lieuNaissance"),
+                    resultSet.getString("lieuMort"),
+                    resultSet.getString("description"),
+                    new ArrayList<>(),
+                    new ArrayList<>(),
+                    0
+            ));
+        }
+        return personnes;
+    }
 }
