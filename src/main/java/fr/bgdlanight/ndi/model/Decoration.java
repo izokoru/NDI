@@ -5,9 +5,9 @@ import java.util.Date;
 public class Decoration {
     // Attributs
     private final long id;
-    private final String nom;
-    private final Date date;
-    private final boolean dateComplete;
+    private String nom;
+    private Date date;
+    private boolean dateComplete;
 
     // Constructeur
     public Decoration(long id, String nom, Date date, boolean dateComplete) {
@@ -18,19 +18,33 @@ public class Decoration {
     }
 
     // Getteurs
+
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public String getNom() {
-        return this.nom;
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public Date getDate() {
-        return this.date;
+        return date;
+    }
+
+    // Setteurs
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public boolean isDateComplete() {
-        return this.dateComplete;
+        return dateComplete;
+    }
+
+    public void setDateComplete(boolean dateComplete) {
+        this.dateComplete = dateComplete;
     }
 }

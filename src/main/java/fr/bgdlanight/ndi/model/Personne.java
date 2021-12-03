@@ -5,65 +5,85 @@ import java.util.Date;
 public class Personne {
     // Attributs
     private final long id;
-    private final String nom;
-    private final String prenom;
-    private final Date naissance;
-    private final Date mort;
-    private final String lieuNaissance;
-    private final int departementNaissance;
-    private final String urlPhoto;
-    private final String description;
+    private String nom;
+    private String prenom;
+    private Date naissance;
+    private Date mort;
+    private String lieuNaissance;
+    private String lieuMort;
+    private String description;
 
     // Constructeur
-    public Personne(long id, String nom, String prenom, Date naissance, Date mort, String lieuNaissance, int departementNaissance, String urlPhoto, String description) {
+    public Personne(long id, String nom, String prenom, Date naissance, Date mort, String lieuNaissance, String lieuMort, String description) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
         this.mort = mort;
         this.lieuNaissance = lieuNaissance;
-        this.departementNaissance = departementNaissance;
-        this.urlPhoto = urlPhoto;
+        this.lieuMort = lieuMort;
         this.description = description;
     }
 
     // Getteurs
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public String getNom() {
-        return this.nom;
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getPrenom() {
-        return this.prenom;
-    }
-
-    public Date getNaissance() {
-        return this.naissance;
-    }
-
-    public Date getMort() {
-        return this.mort;
-    }
-
-    public String getLieuNaissance() {
-        return this.lieuNaissance;
-    }
-
-    public int getDepartementNaissance() {
-        return this.departementNaissance;
-    }
-
-    public String getUrlPhoto() {
-        return this.urlPhoto;
-    }
-
-    public String getDescription() {
-        return this.description;
+        return prenom;
     }
 
     // Setteurs
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
+    public Date getNaissance() {
+        return naissance;
+    }
+
+    public void setNaissance(Date naissance) {
+        this.naissance = naissance;
+    }
+
+    public Date getMort() {
+        return mort;
+    }
+
+    public void setMort(Date mort) {
+        this.mort = mort;
+    }
+
+    public String getLieuNaissance() {
+        return lieuNaissance;
+    }
+
+    public void setLieuNaissance(String lieuNaissance) {
+        this.lieuNaissance = lieuNaissance;
+    }
+
+    public String getLieuMort() {
+        return lieuMort;
+    }
+
+    public void setLieuMort(String lieuMort) {
+        this.lieuMort = lieuMort;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

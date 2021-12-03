@@ -14,6 +14,17 @@ logging:
     web: DEBUG
     fr: DEBUG
 
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+#    show-sql: true
+  datasource:
+    url: jdbc:mysql://mysql-cestquoiunpc.alwaysdata.net:3306/cestquoiunpc_sql
+    username: 251284
+    password: ndi45100
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
 #spring:
 #  cache.jcache.config: classpath:ehcache.xml
 #  config.import: classpath:private.yml # Variables priv�es � ne pas diffuser.

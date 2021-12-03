@@ -6,9 +6,9 @@ import java.util.Vector;
 public class Sauveteur {
     // Attributs
     private final long id;
-    private final Personne personne;
-    private final String carriere;
-    private final List<Decoration> decorations;
+    private Personne personne;
+    private String carriere;
+    private List<Decoration> decorations;
 
     // Constructeur
     public Sauveteur(long id, Personne personne, String carriere, List<Decoration> decorations) {
@@ -19,4 +19,32 @@ public class Sauveteur {
     }
 
     // Getteurs
+    public long getId() {
+        return id;
+    }
+
+    public Personne getPersonne() {
+        return personne;
+    }
+
+    public void setPersonne(Personne personne) {
+        this.personne = personne;
+    }
+
+    public String getCarriere() {
+        return carriere;
+    }
+
+    // Setteurs
+    public void setCarriere(String carriere) {
+        this.carriere = carriere;
+    }
+
+    public List<Decoration> getDecorations() {
+        return decorations;
+    }
+
+    public void setDecorations(List<Decoration> decorations) {
+        this.decorations = decorations;
+    }
 }
