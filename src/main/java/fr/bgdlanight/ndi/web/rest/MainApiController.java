@@ -65,6 +65,19 @@ public class MainApiController {
         );
     }
 
+    @GetMapping(value = "/equipage")
+    public ApiResponse equipage(
+            @RequestParam(value = "id") final int id,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        if (log.isDebugEnabled()) log.debug("Equipage request.");
+        return new ApiResponse(
+                "Equipage request successful.",
+                this.serviceDb.getEquipageById(id)
+        );
+    }
+
     @GetMapping(value = "/actiondesauvetages")
     public ApiResponse actiondesauvetages(
             HttpServletRequest request,
