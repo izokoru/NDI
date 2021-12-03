@@ -7,8 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class ServiceDbMysql implements ServiceDb {
     // Constantes
@@ -26,7 +25,7 @@ public class ServiceDbMysql implements ServiceDb {
         ResultSet resultSet = statement.executeQuery(sql);
 
         if (resultSet.next()) {
-            return new Personne(
+            Personne personne = new Personne(
                     resultSet.getInt("id"),
                     resultSet.getString("nom"),
                     resultSet.getString("prenom"),
@@ -34,8 +33,37 @@ public class ServiceDbMysql implements ServiceDb {
                     resultSet.getDate("mort"),
                     resultSet.getString("lieuNaissance"),
                     resultSet.getString("lieuMort"),
-                    resultSet.getString("description")
+                    resultSet.getString("description"),
+                    new ArrayList<>(),
+                    new ArrayList<>(),
+                    0
             );
+
+            statement = connection.createStatement();
+            sql = "SELECT idMarie2 AS id FROM (SELECT idMarie1, idMarie2, dateMariage FROM Mariage UNION (SELECT idMarie2 AS idMarie1, idMarie1 AS idMarie2, dateMariage FROM Mariage)) as T WHERE idMarie1 = " + id + ";";
+            resultSet = statement.executeQuery(sql);
+
+            if (resultSet.next()) {
+                personne.setEpouxse(resultSet.getInt("id"));
+            }
+
+            statement = connection.createStatement();
+            sql = "SELECT idEnfant AS id FROM Descendance WHERE idParent = " + id + ";";
+            resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                personne.getDescendants().add(resultSet.getLong("id"));
+            }
+
+            statement = connection.createStatement();
+            sql = "SELECT idParent AS id FROM Descendance WHERE idEnfant = " + id + ";";
+            resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                personne.getAscendants().add(resultSet.getLong("id"));
+            }
+
+            return personne;
         } else {
             return null;
         }

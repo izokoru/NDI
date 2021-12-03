@@ -1,6 +1,7 @@
 package fr.bgdlanight.ndi.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Personne {
     // Attributs
@@ -12,9 +13,24 @@ public class Personne {
     private String lieuNaissance;
     private String lieuMort;
     private String description;
+    private List<Long> ascendants;
+    private List<Long> descendants;
+    private long epouxse;
 
     // Constructeur
-    public Personne(long id, String nom, String prenom, Date naissance, Date mort, String lieuNaissance, String lieuMort, String description) {
+    public Personne(
+            long id,
+            String nom,
+            String prenom,
+            Date naissance,
+            Date mort,
+            String lieuNaissance,
+            String lieuMort,
+            String description,
+            List<Long> ascendants,
+            List<Long> descendants,
+            long epouxse
+    ) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -23,6 +39,9 @@ public class Personne {
         this.lieuNaissance = lieuNaissance;
         this.lieuMort = lieuMort;
         this.description = description;
+        this.ascendants = ascendants;
+        this.descendants = descendants;
+        this.epouxse = epouxse;
     }
 
     // Getteurs
@@ -40,6 +59,30 @@ public class Personne {
 
     public String getPrenom() {
         return prenom;
+    }
+
+    public List<Long> getAscendants() {
+        return ascendants;
+    }
+
+    public void setAscendants(List<Long> ascendants) {
+        this.ascendants = ascendants;
+    }
+
+    public List<Long> getDescendants() {
+        return descendants;
+    }
+
+    public void setDescendants(List<Long> descendants) {
+        this.descendants = descendants;
+    }
+
+    public long getEpouxse() {
+        return epouxse;
+    }
+
+    public void setEpouxse(long epouxse) {
+        this.epouxse = epouxse;
     }
 
     // Setteurs
