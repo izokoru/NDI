@@ -12,14 +12,14 @@ import java.util.Date;
 
 public class ServiceDbMysql implements ServiceDb {
     // Constantes
-    private static final String URL = "jdbc:mysql://mysql-cestquoiunpc.alwaysdata.net:3306/cestquoiunpc_sql";
+    private static final String URL = "jdbc:mariadb://mysql-cestquoiunpc.alwaysdata.net:3306/cestquoiunpc_sql";
     private static final String LOGIN = "251284";
     private static final String PASSWD = "ndi45100";
 
     // Getteurs
     @Override
     public Personne getPersonneById(long id) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("org.mariadb.jdbc.Driver");
         Connection connection = DriverManager.getConnection(URL, LOGIN, PASSWD);
         Statement statement = connection.createStatement();
         String sql = "SELECT * FROM Personne WHERE id = " + id + ";";
@@ -30,8 +30,8 @@ public class ServiceDbMysql implements ServiceDb {
                     resultSet.getInt("id"),
                     resultSet.getString("nom"),
                     resultSet.getString("prenom"),
-                    resultSet.getDate("dateNaissance"),
-                    resultSet.getDate("dateMort"),
+                    resultSet.getDate("naissance"),
+                    resultSet.getDate("mort"),
                     resultSet.getString("lieuNaissance"),
                     resultSet.getString("lieuMort"),
                     resultSet.getString("description")

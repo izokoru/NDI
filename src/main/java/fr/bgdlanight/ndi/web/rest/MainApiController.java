@@ -3,7 +3,11 @@ package fr.bgdlanight.ndi.web.rest;
 import fr.bgdlanight.ndi.model.Personne;
 import fr.bgdlanight.ndi.model.apiresponse.ApiError;
 import fr.bgdlanight.ndi.model.apiresponse.ApiResponse;
+import fr.bgdlanight.ndi.service.db.ServiceDb;
+import fr.bgdlanight.ndi.service.db.mysql.ServiceDbMysql;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(path = "api/")
 public class MainApiController {
     // Attributs
-    /* Ici on met les services en autowired, comme des beans
     @Autowired
-    private ServiceTruc serviceTruc;
-     */
+    private ServiceDb serviceDb;
 
     // Méthodes
     @GetMapping(value = "/test")
@@ -37,16 +39,16 @@ public class MainApiController {
         );
     }
 
-    @GetMapping(value = "/test2")
-    public ApiResponse test2(
-            @RequestParam(value = "ui") final int code,
+    @GetMapping(value = "/personne")
+    public ApiResponse personne(
+            @RequestParam(value = "id") final int id,
             HttpServletRequest request,
             HttpServletResponse response
-    ) {
-        if (log.isDebugEnabled()) log.debug("Test2 request.");
+    ) throws Exception {
+        if (log.isDebugEnabled()) log.debug("Personne request.");
         return new ApiResponse(
-                "Test2 request successful.",
-                "Le ui saisi est " + code
+                "Personne request successful.",
+                this.serviceDb.getPersonneById(id)
         );
     }
 
