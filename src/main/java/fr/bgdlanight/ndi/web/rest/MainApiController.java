@@ -26,7 +26,7 @@ public class MainApiController {
 
     // Méthodes
     @GetMapping(value = "/test")
-    public ApiResponse personnes(
+    public ApiResponse test(
             @RequestParam(value = "page") final int page,
             @RequestParam(value = "ressourcesPerPage", defaultValue = "32") final int elementsParPage,
             HttpServletRequest request,
@@ -49,6 +49,19 @@ public class MainApiController {
         return new ApiResponse(
                 "Personne request successful.",
                 this.serviceDb.getPersonneById(id)
+        );
+    }
+
+    @GetMapping(value = "/actiondesauvetage")
+    public ApiResponse actiondesauvetage(
+            @RequestParam(value = "id") final int id,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        if (log.isDebugEnabled()) log.debug("Action De Sauvetage request.");
+        return new ApiResponse(
+                "Action De Sauvetage request successful.",
+                this.serviceDb.getActionById(id)
         );
     }
 

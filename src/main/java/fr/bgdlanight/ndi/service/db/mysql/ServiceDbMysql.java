@@ -1,5 +1,6 @@
 package fr.bgdlanight.ndi.service.db.mysql;
 
+import fr.bgdlanight.ndi.model.ActionDeSauvetage;
 import fr.bgdlanight.ndi.model.Personne;
 import fr.bgdlanight.ndi.service.db.ServiceDb;
 
@@ -64,6 +65,29 @@ public class ServiceDbMysql implements ServiceDb {
             }
 
             return personne;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public ActionDeSauvetage getActionById(long id) throws Exception {
+        Class.forName("org.mariadb.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(URL, LOGIN, PASSWD);
+        Statement statement = connection.createStatement();
+        String sql = "SELECT * FROM ActionDeSauvetage WHERE id = " + id + ";";
+        ResultSet resultSet = statement.executeQuery(sql);
+
+        if (resultSet.next()) {
+            ActionDeSauvetage actionDeSauvetage = new ActionDeSauvetage(
+                    resultSet.getInt("id"),
+                    resultSet.getDate("dateSauvetage"),
+                    resultSet.getString("description"),
+                    resultSet.getInt("idEquipage"),
+                    resultSet.getInt("idSauveteur")
+            );
+
+            return actionDeSauvetage;
         } else {
             return null;
         }

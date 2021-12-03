@@ -9,22 +9,16 @@ public class ActionDeSauvetage {
     private final long id;
     private Date date;
     private String description;
-    private ArrayList<Personne> personnes;
-    private HashMap<Personne, String> postes;
+    private int idEquipage;
+    private int idSauveteur;
 
     // Constructeur
-    public ActionDeSauvetage(long id, Date date, String description) {
+    public ActionDeSauvetage(long id, Date date, String description, int idEquipage, int idSauveteur) {
         this.id = id;
         this.date = date;
         this.description = description;
-        this.personnes = new ArrayList<>();
-    }
-
-    public ActionDeSauvetage(long id, Date date, String description, ArrayList<Personne> personnes) {
-        this.id = id;
-        this.date = date;
-        this.description = description;
-        this.personnes = personnes;
+        this.idEquipage = idEquipage;
+        this.idSauveteur = idSauveteur;
     }
 
     // Getteurs
@@ -38,16 +32,17 @@ public class ActionDeSauvetage {
         return this.description;
     }
 
+    public int getIdEquipage() { return this.idEquipage; }
+
+    public int getIdSauveteur() { return this.idSauveteur; }
+
     // Setteurs
     public void setDescription(String description) { this.description = description; }
 
     public void setDate(Date date) { this.date = date; }
 
-    public void addPersonne(Personne p) { this.personnes.add(p); }
+    public void setIdEquipage(int id) { this.idEquipage = id; }
 
-    public void removePersonne(Personne p) { this.personnes.remove(p); }
+    public void setIdSauveteur(int id) { this.idSauveteur = id; }
 
-    public void addPoste(Personne p, String poste) { this.postes.put(p, poste); }
-
-    public void removePoste(Personne p) { this.postes.remove(p); }
 }
